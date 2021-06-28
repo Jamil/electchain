@@ -1,4 +1,5 @@
-var abi = [
+var abi = 
+    [
 	{
 		"inputs": [
 			{
@@ -23,6 +24,34 @@ var abi = [
 			}
 		],
 		"name": "sendResult",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint16",
+				"name": "year",
+				"type": "uint16"
+			},
+			{
+				"internalType": "string[]",
+				"name": "states",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[][]",
+				"name": "parties",
+				"type": "string[][]"
+			},
+			{
+				"internalType": "uint32[][]",
+				"name": "votes",
+				"type": "uint32[][]"
+			}
+		],
+		"name": "sendResults",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -69,7 +98,7 @@ var abi = [
 abiDecoder.addABI(abi);
 // call abiDecoder.decodeMethod to use this - see 'getAllFunctionCalls' for more
 
-var contractAddress = '0x225B2F6b931092Fda8742087e02d2cC71D24dc74'; 
+var contractAddress = '0x9C5A41719c9C496Afbf14D6FD00764c656a2DA82'; 
 
 async function createElections() {
     let data = await readData();
@@ -98,6 +127,24 @@ async function readData() {
     });
     const records = $.csv.toObjects(csv);
     return records;
+}
+
+async function publishYearData(year, states, parties, votes) {
+    console.log('Publishing data from: ' + year)
+    console.log(states)
+    console.log(parties)
+    console.log(votes)
+    let transaction = window.PresidentialElections.methods.sendResults(
+        year,
+        states,
+        parties,
+        votes
+    );
+    let options = {
+        'from': web3.eth.defaultAccount
+    };
+    let txHash = await transaction.send(options);
+    return txHash;
 }
 
 async function publishData(year, state, results) {
@@ -149,14 +196,23 @@ function setup() {
 
 $("#uploadmit19762020").click(function() {
     createElections().then((elections) => {
-    //  console.log(util.inspect(elections, false, null, true))
+        //  console.log(util.inspect(elections, false, null, true))
         for (year in elections) {
+            var states = []
+            var parties = []
+            var votes = []
             for (state in elections[year]) {
-                publishData(year, state, elections[year][state]).then((txHash) => {
-                    console.log('Published with hash ' + txHash);
-                }).catch((error) => {
-                    console.log(error);
-                });
+                states.push(state)
+                parties.push(elections[year][state]['parties'])
+                votes.push(elections[year][state]['votes'])
+                //              publishData(year, state, elections[year][state]).then((txHash) => {
+                //                  console.log('Published with hash ' + txHash);
+                //              }).catch((error) => {
+                //                  console.log(error);
+                //              });
+            }
+            if (year == 2020) {
+                publishYearData(year, states, parties, votes);
             }
         }
     });
