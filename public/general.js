@@ -3,4 +3,4 @@ $('.infobox').click(function() {
     $(this).addClass('selected');
 });
 
-$('#mit2016box').click();
+$('#ap2020box').click();

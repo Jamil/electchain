@@ -1,5 +1,5 @@
 ul.horizontal {
-    font-family: "SF Pro", "Courier New", monospace;
+    font-family: "SF Mono", "Courier New", monospace;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -13,18 +13,18 @@ ul.horizontal {
 }
 
 .ecHeader {
-    font-family: "SF Pro", "Courier New", monospace;
+    font-family: "SF Mono", "Courier New", monospace;
     font-size: 32;
     font-weight: "bold", "heavy";
 }
 
 .ecSubtitle {
-    font-family: "SF Pro", "Courier New", monospace;
+    font-family: "SF Mono", "Courier New", monospace;
     font-size: 14;
 }
 
 .ecMenu {
-    font-family: "SF Pro", "Courier New", monospace;
+    font-family: "SF Mono", "Courier New", monospace;
     font-size: 24;
     margin: 20px;
 }
@@ -183,7 +183,7 @@ ul.border li:last-child {
 }
 
 .infobox {
-    font-family: "SF Pro", "Courier New", monospace;
+    font-family: "SF Mono", "Courier New", monospace;
     border: 1px solid #555;
     margin: 8px;
     display: "inline-block";
@@ -204,6 +204,7 @@ ul.border li:last-child {
 }
 
 .infobox-right {
+    font-size: 14px;
     display: flex; 
     float: left; 
     justify-content: space-around; 
@@ -254,7 +255,7 @@ ul.border li:last-child {
 }
 
 .ecFooter {
-    font-family: "SF Pro", "Courier New", monospace;
+    font-family: "SF Mono", "Courier New", monospace;
     font-size: 14;
     text-align: center;
 }

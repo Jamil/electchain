@@ -133,9 +133,6 @@ function mitResults(year) {
     const contractAddress = '0x9C5A41719c9C496Afbf14D6FD00764c656a2DA82'; 
     const PresidentialElections = new window.web3ropsten.eth.Contract(abi, contractAddress);
 
-    String.prototype.toProperCase = function () {
-        return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    };
     const states = {"ALABAMA": "AL", "ALASKA": "AK", "ARIZONA": "AZ", "ARKANSAS": "AR", "CALIFORNIA": "CA", "COLORADO": "CO", "CONNECTICUT": "CT", "DELAWARE": "DE", "DISTRICT OF COLUMBIA": "DC", "FLORIDA": "FL", "GEORGIA": "GA", "HAWAII": "HI", "IDAHO": "ID", "ILLINOIS": "IL", "INDIANA": "IN", "IOWA": "IA", "KANSAS": "KS", "KENTUCKY": "KY", "LOUISIANA": "LA", "MAINE": "ME", "MARYLAND": "MD", "MASSACHUSETTS": "MA", "MICHIGAN": "MI", "MINNESOTA": "MN", "MISSISSIPPI": "MS", "MISSOURI": "MO", "MONTANA": "MT", "NEBRASKA": "NE", "NEVADA": "NV", "NEW HAMPSHIRE": "NH", "NEW JERSEY": "NJ", "NEW MEXICO": "NM", "NEW YORK": "NY", "NORTH CAROLINA": "NC", "NORTH DAKOTA": "ND", "OHIO": "OH", "OKLAHOMA": "OK", "OREGON": "OR", "PENNSYLVANIA": "PA", "RHODE ISLAND": "RI", "SOUTH CAROLINA": "SC", "SOUTH DAKOTA": "SD", "TENNESSEE": "TN", "TEXAS": "TX", "UTAH": "UT", "VERMONT": "VT", "VIRGINIA": "VA", "WASHINGTON": "WA", "WEST VIRGINIA": "WV", "WISCONSIN": "WI", "WYOMING": "WY"}
 
     const statesList = [];
@@ -153,10 +150,7 @@ function mitResults(year) {
         renderDataNew([]);
     }
 
-    console.log(statesList);
-
     Promise.all(promises).then((results) => {
-        console.log(results);
         renderDataNew(results);
     });
 
@@ -166,7 +160,6 @@ function mitResults(year) {
             libColor = 'rgba(240,190,50,0.80)',
             grnColor = 'rgba(90,200,90,0.80)';
 
-        console.log(results);
         var data = [];
         for (var i = 0; i < results.length; i++) {
             result = results[i];
@@ -296,120 +289,5 @@ function mitResults(year) {
             }]
         });
 
-    }
-
-    function renderData(gaData) {
-        var data = [
-            ['us-ma', 0],
-            ['us-wa', 1],
-            ['us-ca', 2],
-            ['us-or', 3],
-            ['us-wi', 4],
-            ['us-me', 5],
-            ['us-mi', 6],
-            ['us-nv', 7],
-            ['us-nm', 8],
-            ['us-co', 9],
-            ['us-wy', 10],
-            ['us-ks', 11],
-            ['us-ne', 12],
-            ['us-ok', 13],
-            ['us-mo', 14],
-            ['us-il', 15],
-            ['us-in', 16],
-            ['us-vt', 17],
-            ['us-ar', 18],
-            ['us-tx', 19],
-            ['us-ri', 20],
-            ['us-al', 21],
-            ['us-ms', 22],
-            ['us-nc', 23],
-            ['us-va', 24],
-            ['us-ia', 25],
-            ['us-md', 26],
-            ['us-de', 27],
-            ['us-pa', 28],
-            ['us-nj', 29],
-            ['us-ny', 30],
-            ['us-id', 31],
-            ['us-sd', 32],
-            ['us-ct', 33],
-            ['us-nh', 34],
-            ['us-ky', 35],
-            ['us-oh', 36],
-            ['us-tn', 37],
-            ['us-wv', 38],
-            ['us-dc', 39],
-            ['us-la', 40],
-            ['us-fl', 41],
-            //  ['us-ga', 42],
-            ['us-sc', 43],
-            ['us-mn', 44],
-            ['us-mt', 45],
-            ['us-nd', 46],
-            ['us-az', 47],
-            ['us-ut', 48],
-            ['us-hi', 49],
-            ['us-ak', 50],
-            ['gu-3605', 51],
-            ['mp-ti', 52],
-            ['mp-sa', 53],
-            ['mp-ro', 54],
-            ['as-6515', 55],
-            ['as-6514', 56],
-            ['pr-3614', 57],
-            ['vi-3617', 58],
-            ['vi-6398', 59],
-            ['vi-6399', 60]
-        ];
-        data.push(['us-ga', gaData['votes'][0]]);
-
-        // Create the chart
-        Highcharts.mapChart('mapcontainer', {
-            chart: {
-                map: 'countries/us/custom/us-all-territories'
-            },
-
-            title: {
-                text: '2016 Presidential Election Results'
-            },
-
-            subtitle: {
-                text: 'Fetched from Ropsten Testnet Blockchain'
-            },
-
-            mapNavigation: {
-                enabled: true,
-                buttonOptions: {
-                    verticalAlign: 'bottom'
-                }
-            },
-
-            colorAxis: {
-                min: 0
-            },
-
-            series: [{
-                data: data,
-                name: 'Random data',
-                states: {
-                    hover: {
-                        color: '#BADA55'
-                    }
-                },
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.name}'
-                }
-            }, {
-                name: 'Separators',
-                type: 'mapline',
-                data: Highcharts.geojson(Highcharts.maps['countries/us/custom/us-all-territories'], 'mapline'),
-                color: 'silver',
-                nullColor: 'silver',
-                showInLegend: false,
-                enableMouseTracking: false
-            }]
-        });
     }
 }
