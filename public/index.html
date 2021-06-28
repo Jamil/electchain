@@ -1,0 +1,187 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/custom/us-all-territories.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="./web3.js"></script>
+    <script src="./ecscripts/abi-decoder.js"></script>
+</head>
+
+<div class="webHeader">
+    <div style="margin: 20px">
+        <div class="ecHeader"><b>ElectChain</b></div>
+        <div class="ecSubtitle">Preserving the Information of Democracy</div>
+    </div>
+    <div style="display: flex; align-items: center;">
+        <div class="ecMenu">Maps</div>
+        <div class="ecMenu">DAO</div>
+        <div class="ecMenu">Data</div>
+        <div class="ecMenu">About</div>
+    </div>
+</div>
+
+<div style="display: flex; margin-top: 20px;">
+    <div class="projectList" style="max-height: 500px">
+        <div id="ap2020box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>2020 Presidential Race Calls</b></div>
+                    <div>Data: AP, Contract: AP</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ETH</div>
+                    <div class="greendot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit2016box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>2016 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit2012box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>2012 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit2008box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>2008 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit2004box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>2004 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit2000box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>2000 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit1996box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>1996 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit1992box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>1992 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit1988box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>1988 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit1984box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>1984 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit1980box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>1980 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mit1976box" class="infobox">
+            <div class="infobox-left">
+                <div style="margin: 12px;">
+                    <div style="font-size: 18px;"><b>1976 Presidential Election</b></div>
+                    <div>Data: MIT, Contract: ElectChain</div>
+                </div>
+                <div class="infobox-right">
+                    <div style="margin-right: 5px; padding-top: 2px;">ROPSTEN</div>
+                    <div class="yellowdot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mapcontainer"></div>
+</div>
+<div class="ecFooter">
+    Connected to the Ethereum Blockchain through Infura.<br>
+    Connect directly with <a href="javascript(0);">Metamask</a> or <a href="javascript(0);">WalletConnect</a>.
+</div>
+<div class="console">
+</div>
+
+<script src="./mit.js"></script>
+<script src="./general.js"></script>
+<script src="./ecscripts/utils.js"></script>
