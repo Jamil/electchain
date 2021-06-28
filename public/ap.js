@@ -323,7 +323,7 @@ function renderData(results, statesList) {
                             ['Race Called', this.raceCalled , repColor],
                         ], function (line) {
                             if (line[0] == "Race Called") {
-                                return line[0] + ': ' + timeConverter(line[1]) + '<br>';
+                                return line[0] + ': ' + timeConverter(line[1]) + ' UTC<br>';
                             } else {
                                 return line[0] + ': ' + line[1] + '<br>';
                             }
