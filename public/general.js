@@ -4,3 +4,7 @@ $('.infobox').click(function() {
 });
 
 $('#ap2020box').click();
+
+$('#connectButton').click(function() {
+    connectMetamask()
+});
