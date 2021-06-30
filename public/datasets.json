@@ -1,0 +1,181 @@
+[
+    {
+        "title": "2020 Presidential Race Calls",
+        "id": "ap2020",
+        "script": "apResults",
+        "data_source": {
+            "organization": "AP",
+            "link": "https://developer.ap.org/ap-elections-api/"
+        },
+        "chain_source": {
+            "organization": "AP",
+            "address": "0x0792724900B551d200D954a5Ed709d9514d73A9F",
+            "network": "mainnet"
+        }
+    },
+    {
+        "title": "2016 Presidential Election",
+        "id": "mit2016",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0x29bd28d6CAc57be3703dcAc3190B208371D54D9B"
+    },
+    {
+        "title": "2012 Presidential Election",
+        "id": "mit2012",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0xd1A297254DC5BEE49efA313D3016f97b341Db696"
+    },
+    {
+        "title": "2008 Presidential Election",
+        "id": "mit2008",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0xb7BB2E82005BCa27421A8Ead9B9BA323B5C5c072"
+    },
+    {
+        "title": "2004 Presidential Election",
+        "id": "mit2004",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0x6FD60f776F1EEe20D9ef7361DFbeca0093Aa6166"
+    },
+    {
+        "title": "2000 Presidential Election",
+        "id": "mit2000",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0xED331f14537950E4DB6Cd3C86D56f54e69549d3d"
+    },
+    {
+        "title": "1996 Presidential Election",
+        "id": "mit1996",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0x55130Bad8468db98E0064C5F2c8b384D4A2126c6"
+    },
+    {
+        "title": "1992 Presidential Election",
+        "id": "mit1992",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0x5B2a3c42b44D59cDb7865Ac6fBd37716D85b4cb0"
+    },
+    {
+        "title": "1988 Presidential Election",
+        "id": "mit1988",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0xa7dD5dbF9416F897c924Adfa050C1397cD35709E"
+    },
+    {
+        "title": "1984 Presidential Election",
+        "id": "mit1984",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0x444505d3c4f1b775A2eF5041FC9E8576eC00142E"
+    },
+    {
+        "title": "1980 Presidential Election",
+        "id": "mit1980",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0xFef2419d333daa21509DEaD50c107DF7fd281cD2"
+    },
+    {
+        "title": "1976 Presidential Election",
+        "id": "mit1976",
+        "script": "mitResults",
+        "data_source": {
+            "organization": "MIT",
+            "link": "https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx"
+        },
+        "chain_source": {
+            "organization": "ElectChain",
+            "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
+            "network": "ropsten"
+        },
+        "fund_address": "0xdd535Fe2c772ab379E4387bD79CA4fAF84432Dc9"
+    }
+]

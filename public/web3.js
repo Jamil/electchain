@@ -17,6 +17,7 @@ function connectMetamask() {
                 $('#connectStatus').html('Connected ');
                 $('#connectStatus').css('color', '#16a085');
                 $('#connectButton').removeClass('ecMenuHover');
+                $('.ecFooter').html('Connected to the Ethereum Blockchain through Infura and an in-browser Ethereum wallet.<br>');
             }
         });
     });

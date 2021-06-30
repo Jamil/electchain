@@ -259,3 +259,37 @@ ul.border li:last-child {
     font-size: 14;
     text-align: center;
 }
+
+.tooltip {
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 500px;
+    background-color: white;
+    color: #555;
+    opacity: 0.95;
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px 0;
+    overflow: visible;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 100;
+    left: 37%;
+    top: 15%
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.fundprogress {
+    height: 2.0rem;
+    color: gray;
+}
+
+progress::-moz-progress-bar { background: gray; }
+progress::-webkit-progress-value { background: gray; }
+progress { color: gray; }
