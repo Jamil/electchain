@@ -1,8 +1,4 @@
-from generate_table import generate_table
-
-head = '''
 <head>
-    <title>ElectChain: Preserving Election Results on the Blockchain</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
@@ -16,58 +12,28 @@ head = '''
     <script src="./web3.js"></script>
     <script src="./ecscripts/abi-decoder.js"></script>
 </head>
-'''
 
-header = '''
 <div class="webHeader">
     <div style="margin: 20px" onclick="window.location = 'index.html';">
         <div class="ecHeader"><b>ElectChain</b></div>
         <div class="ecSubtitle">Preserving the Information of Democracy</div>
     </div>
     <div style="display: flex; align-items: center;">
-        <!--
-        <div class="ecMenu ecMenuHover" id="connectButton" style="display: flex; align-items: center;">
-            <div id="connectStatus">Connect </div>
-            <div><img src="eth.png" width=30 height=30></img></div>
-        </div>
-        -->
-        <div class="ecMenu ecMenuCurrent" onclick="window.location = 'index.html'">Maps</div>
+        <div class="ecMenu ecMenuHover" onclick="window.location = 'index.html'">Maps</div>
         <div class="ecMenu ecMenuHover" onclick="window.location = 'dao.html'">DAO</div>
-        <div class="ecMenu ecMenuHover" onclick="window.location = 'data.html'">Data</div>
+        <div class="ecMenu ecMenuCurrent" onclick="window.location = 'data.html'">Data</div>
         <div class="ecMenu ecMenuHover" onclick="window.location = 'about.html'">About</div>
     </div>
 </div>
-'''
 
-projects = '''
 <body>
-    <div style="display: flex; margin-top: 20px;">
-        <div class="projectList">
-            {project_list}
-        </div>
-        <div id="detailcontainer">
-            <div id="mapcontainer"></div>
-            <div id="projectDetails">
-            </div>
-        </div>
+    <center>
+    <div id="daoDetails">
+        Right now, ElectChain uses two data sources; the AP, which publishes race calls <a href="https://developer.ap.org/ap-elections-api/" class="dataLink">directly to the blockchain</a>, 
+        and <a href="https://electionlab.mit.edu/data" class="dataLink">MIT, which publishes their data online</a>. 
+        To show the AP data, we make direct calls to the <a href="https://etherscan.io/address/0x0792724900B551d200D954a5Ed709d9514d73A9F" class="dataLink">smart contract</a> to retrieve the data, and then visualize it in the browser; it never hits ElectChain's servers.<br><br>
+
+        ElectChain publishes the MIT data to the blockchain ourselves. We maintain the initial version of the Smart Contract for recording Presidential Election results. It's expensive to get everything on the Ethereum main network, however, with the amount of data we would like to store; for each election, it costs around $200 to store all the information on the blockchain. For now, most of the elections are stored on the Ropsten test network, but we intend on migrating all results to the main network. Funds will be raised through a combination of donations and NFT sales.
     </div>
+    </center>
 </body>
-'''
-
-footer = '''
-<div class="console">
-</div>
-
-<script src="./ecscripts/utils.js"></script>
-<script src="./mit.js"></script>
-<script src="./ap.js"></script>
-<script src="./general.js"></script>
-'''
-
-def generate_index():
-    table = generate_table()
-    projects_resolved = projects.format(project_list = table)
-    return head + header + projects_resolved + footer
-
-if __name__ == '__main__':
-    print(generate_index())
