@@ -59,6 +59,7 @@ footer = '''
 </div>
 
 <script src="./ecscripts/utils.js"></script>
+<script src="./dao.js"></script>
 <script src="./mit.js"></script>
 <script src="./ap.js"></script>
 <script src="./general.js"></script>

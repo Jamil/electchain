@@ -27,6 +27,26 @@ function connectMetamask() {
     });
 }
 
+function register(address) {
+    ethereum.request({ method: 'eth_requestAccounts' }).then((result) => {
+        const web3 = new Web3(Web3.givenProvider);
+        web3.eth.getAccounts(function(err, accounts) {
+            if (accounts.length > 0) {
+                var user_address = accounts[0];
+                web3.eth.sendTransaction({
+                    to: address,
+                    from: user_address,
+                    value: web3.utils.toWei('0.005', 'ether'),
+                }, function (err, transactionHash) {
+                    alert('Thank you! This goes a long way to helping preserve our information. You can check the new fund balance by reloading this page.')
+                })
+            } else {
+                alert('You need to log in MetaMask to use this feature.')
+            }
+        });
+    });
+}
+
 function donate(address) {
     ethereum.request({ method: 'eth_requestAccounts' }).then((result) => {
         const web3 = new Web3(Web3.givenProvider);
