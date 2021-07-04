@@ -1,38 +1,5 @@
-$('#mit2016box').click(function() {
-    mitResults(2016);
-});
-$('#mit2012box').click(function() {
-    mitResults(2012);
-});
-$('#mit2008box').click(function() {
-    mitResults(2008);
-});
-$('#mit2004box').click(function() {
-    mitResults(2004);
-});
-$('#mit2000box').click(function() {
-    mitResults(2000);
-});
-$('#mit1996box').click(function() {
-    mitResults(1996);
-});
-$('#mit1992box').click(function() {
-    mitResults(1992);
-});
-$('#mit1988box').click(function() {
-    mitResults(1988);
-});
-$('#mit1984box').click(function() {
-    mitResults(1984);
-});
-$('#mit1980box').click(function() {
-    mitResults(1980);
-});
-$('#mit1976box').click(function() {
-    mitResults(1976);
-});
-
-function mitResults(year) {
+function mitResults(yearStr) {
+    var year = parseInt(yearStr.slice(-4));
     var abi = 
         [
             {

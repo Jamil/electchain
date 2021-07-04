@@ -1,3 +1,4 @@
+
 <head>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
@@ -14,17 +15,19 @@
 </head>
 
 <div class="webHeader">
-    <div style="margin: 20px">
+    <div style="margin: 20px" onclick="window.location = 'index.html';">
         <div class="ecHeader"><b>ElectChain</b></div>
         <div class="ecSubtitle">Preserving the Information of Democracy</div>
     </div>
     <div style="display: flex; align-items: center;">
+        <!--
         <div class="ecMenu ecMenuHover" id="connectButton" style="display: flex; align-items: center;">
             <div id="connectStatus">Connect </div>
             <div><img src="eth.png" width=30 height=30></img></div>
         </div>
-        <div class="ecMenu ecMenuHover">Maps</div>
-        <div class="ecMenu ecMenuHover">DAO</div>
+        -->
+        <div class="ecMenu ecMenuCurrent" onclick="window.location = 'index.html'">Maps</div>
+        <div class="ecMenu ecMenuHover" onclick="window.location = 'dao.html'">DAO</div>
         <div class="ecMenu ecMenuHover">Data</div>
         <div class="ecMenu ecMenuHover">About</div>
     </div>
@@ -32,211 +35,396 @@
 
 <body>
     <div style="display: flex; margin-top: 20px;">
-        <div class="projectList" style="max-height: 500px;">
-            <div id="ap2020box" class="infobox">
+        <div class="projectList">
+            
+            <div id="ap2020-box" class="infobox" onclick="apResults('ap2020'); displayMessage('ap2020');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>2020 Presidential Race Calls</b></div>
-                        <div style="font-size: 14px;">Data: AP, Contract: AP</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://developer.ap.org/ap-elections-api/" class="dataLink" target="_blank">AP</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x0792724900B551d200D954a5Ed709d9514d73A9F">
+                                <a href="https://etherscan.io/address/0x0792724900B551d200D954a5Ed709d9514d73A9F" class="dataLink" target="_blank">AP</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ETH</div>
                         <div class="greendot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ethereum main network.<br>
-                            It is preserved and secure.
-                        </span>
                     </div>
                 </div>
+                <span id="ap2020-box-networkMessage" style="display: none;">
+                    This data is on the Ethereum main network.<br>
+                  It is preserved and secure for as long as Ethereum exists, <br>
+                  stored on a <span data-tooltip-text="0x0792724900B551d200D954a5Ed709d9514d73A9F">
+                  <a href="https://etherscan.io/address/0x0792724900B551d200D954a5Ed709d9514d73A9F" class="dataLink" target="_blank">smart contract</a>
+                  </span> directly on the blockchain.
+                  
+                </span>
             </div>
-            <div id="mit2016box" class="infobox">
+
+            <div id="mit2016-box" class="infobox" onclick="mitResults('mit2016'); displayMessage('mit2016');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>2016 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            Funds to graduate to mainnet: <span id="mit2016fund">4</span> ETH of 0.10 ETH<br>
-                            0x29bd28d6CAc57be3703dcAc3190B208371D54D9B<br>
-                            <progress class="fundprogress" id="mit2016" value="32" max="100">32%</progress><br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit2016-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0x29bd28d6CAc57be3703dcAc3190B208371D54D9B')" class="dataLink">0x29bd28d6CAc57be3703dcAc3190B208371D54D9B</a>
+    <br><br>
+    Funds raised for <i>2016 Presidential Election</i> preservation: <span class="fundBalance" id="mit2016-fund-balance" data-fund-address="0x29bd28d6CAc57be3703dcAc3190B208371D54D9B">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit2012box" class="infobox">
+
+            <div id="mit2012-box" class="infobox" onclick="mitResults('mit2012'); displayMessage('mit2012');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>2012 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            Funds to graduate to mainnet: [0 ETH / 0.6 ETH]<br>
-                            0xd1A297254DC5BEE49efA313D3016f97b341Db696<br>
-                            <progress class="fundprogress" id="mit2016" value="32" max="100">32%</progress><br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit2012-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0xd1A297254DC5BEE49efA313D3016f97b341Db696')" class="dataLink">0xd1A297254DC5BEE49efA313D3016f97b341Db696</a>
+    <br><br>
+    Funds raised for <i>2012 Presidential Election</i> preservation: <span class="fundBalance" id="mit2012-fund-balance" data-fund-address="0xd1A297254DC5BEE49efA313D3016f97b341Db696">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit2008box" class="infobox">
+
+            <div id="mit2008-box" class="infobox" onclick="mitResults('mit2008'); displayMessage('mit2008');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>2008 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit2008-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0xb7BB2E82005BCa27421A8Ead9B9BA323B5C5c072')" class="dataLink">0xb7BB2E82005BCa27421A8Ead9B9BA323B5C5c072</a>
+    <br><br>
+    Funds raised for <i>2008 Presidential Election</i> preservation: <span class="fundBalance" id="mit2008-fund-balance" data-fund-address="0xb7BB2E82005BCa27421A8Ead9B9BA323B5C5c072">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit2004box" class="infobox">
+
+            <div id="mit2004-box" class="infobox" onclick="mitResults('mit2004'); displayMessage('mit2004');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>2004 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit2004-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0x6FD60f776F1EEe20D9ef7361DFbeca0093Aa6166')" class="dataLink">0x6FD60f776F1EEe20D9ef7361DFbeca0093Aa6166</a>
+    <br><br>
+    Funds raised for <i>2004 Presidential Election</i> preservation: <span class="fundBalance" id="mit2004-fund-balance" data-fund-address="0x6FD60f776F1EEe20D9ef7361DFbeca0093Aa6166">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit2000box" class="infobox">
+
+            <div id="mit2000-box" class="infobox" onclick="mitResults('mit2000'); displayMessage('mit2000');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>2000 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit2000-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0xED331f14537950E4DB6Cd3C86D56f54e69549d3d')" class="dataLink">0xED331f14537950E4DB6Cd3C86D56f54e69549d3d</a>
+    <br><br>
+    Funds raised for <i>2000 Presidential Election</i> preservation: <span class="fundBalance" id="mit2000-fund-balance" data-fund-address="0xED331f14537950E4DB6Cd3C86D56f54e69549d3d">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit1996box" class="infobox">
+
+            <div id="mit1996-box" class="infobox" onclick="mitResults('mit1996'); displayMessage('mit1996');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>1996 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit1996-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0x55130Bad8468db98E0064C5F2c8b384D4A2126c6')" class="dataLink">0x55130Bad8468db98E0064C5F2c8b384D4A2126c6</a>
+    <br><br>
+    Funds raised for <i>1996 Presidential Election</i> preservation: <span class="fundBalance" id="mit1996-fund-balance" data-fund-address="0x55130Bad8468db98E0064C5F2c8b384D4A2126c6">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit1992box" class="infobox">
+
+            <div id="mit1992-box" class="infobox" onclick="mitResults('mit1992'); displayMessage('mit1992');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>1992 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit1992-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0x5B2a3c42b44D59cDb7865Ac6fBd37716D85b4cb0')" class="dataLink">0x5B2a3c42b44D59cDb7865Ac6fBd37716D85b4cb0</a>
+    <br><br>
+    Funds raised for <i>1992 Presidential Election</i> preservation: <span class="fundBalance" id="mit1992-fund-balance" data-fund-address="0x5B2a3c42b44D59cDb7865Ac6fBd37716D85b4cb0">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit1988box" class="infobox">
+
+            <div id="mit1988-box" class="infobox" onclick="mitResults('mit1988'); displayMessage('mit1988');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>1988 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit1988-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0xa7dD5dbF9416F897c924Adfa050C1397cD35709E')" class="dataLink">0xa7dD5dbF9416F897c924Adfa050C1397cD35709E</a>
+    <br><br>
+    Funds raised for <i>1988 Presidential Election</i> preservation: <span class="fundBalance" id="mit1988-fund-balance" data-fund-address="0xa7dD5dbF9416F897c924Adfa050C1397cD35709E">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit1984box" class="infobox">
+
+            <div id="mit1984-box" class="infobox" onclick="mitResults('mit1984'); displayMessage('mit1984');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>1984 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit1984-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0x444505d3c4f1b775A2eF5041FC9E8576eC00142E')" class="dataLink">0x444505d3c4f1b775A2eF5041FC9E8576eC00142E</a>
+    <br><br>
+    Funds raised for <i>1984 Presidential Election</i> preservation: <span class="fundBalance" id="mit1984-fund-balance" data-fund-address="0x444505d3c4f1b775A2eF5041FC9E8576eC00142E">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit1980box" class="infobox">
+
+            <div id="mit1980-box" class="infobox" onclick="mitResults('mit1980'); displayMessage('mit1980');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>1980 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit1980-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0xFef2419d333daa21509DEaD50c107DF7fd281cD2')" class="dataLink">0xFef2419d333daa21509DEaD50c107DF7fd281cD2</a>
+    <br><br>
+    Funds raised for <i>1980 Presidential Election</i> preservation: <span class="fundBalance" id="mit1980-fund-balance" data-fund-address="0xFef2419d333daa21509DEaD50c107DF7fd281cD2">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
             </div>
-            <div id="mit1976box" class="infobox">
+
+            <div id="mit1976-box" class="infobox" onclick="mitResults('mit1976'); displayMessage('mit1976');">
                 <div class="infobox-left">
                     <div style="margin: 12px;">
                         <div style="font-size: 18px;"><b>1976 Presidential Election</b></div>
-                        <div style="font-size: 14px;">Data: MIT, Contract: ElectChain</div>
+                        <div style="font-size: 14px;">
+                            Data: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentid=doi:10.7910/dvn/42mvdx" class="dataLink" target="_blank">MIT</a>,
+                            Contract: 
+                            <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+                                <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">ElectChain</a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="infobox-right tooltip">
+                    <div class="infobox-right">
                         <div style="margin-right: 5px; padding-top: 1px;">ROPSTEN</div>
                         <div class="yellowdot"></div>
-                        <span class="tooltiptext">
-                            This data is on the Ropsten test network.<br>
-                            No fund has been established for mainnet graduation.<br>
-                        </span>
                     </div>
                 </div>
+                <span id="mit1976-box-networkMessage" style="display: none;">
+                    
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="0x9c5a41719c9c496afbf14d6fd00764c656a2da82">
+    <a href="https://ropsten.etherscan.io/address/0x9c5a41719c9c496afbf14d6fd00764c656a2da82" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+    You can help make this happen by sending funds to <br>
+    <a href="javascript:donate('0xdd535Fe2c772ab379E4387bD79CA4fAF84432Dc9')" class="dataLink">0xdd535Fe2c772ab379E4387bD79CA4fAF84432Dc9</a>
+    <br><br>
+    Funds raised for <i>1976 Presidential Election</i> preservation: <span class="fundBalance" id="mit1976-fund-balance" data-fund-address="0xdd535Fe2c772ab379E4387bD79CA4fAF84432Dc9">?</span> ETH of 0.10 ETH<br>
+    
+                </span>
+            </div>
+
+        </div>
+        <div id="detailcontainer">
+            <div id="mapcontainer"></div>
+            <div id="projectDetails">
             </div>
         </div>
-        <div id="mapcontainer" style="position: relative;"></div>
     </div>
 </body>
 
-<div class="ecFooter">
-    Connected to the Ethereum Blockchain through Infura.<br>
-</div>
 <div class="console">
 </div>
 
@@ -244,3 +432,4 @@
 <script src="./mit.js"></script>
 <script src="./ap.js"></script>
 <script src="./general.js"></script>
+

@@ -14,13 +14,17 @@ ul.horizontal {
 
 .ecHeader {
     font-family: "SF Mono", "Courier New", monospace;
-    font-size: 32;
+    font-size: 40;
     font-weight: "bold", "heavy";
+}
+
+.ecHeader:hover {
+    cursor: pointer
 }
 
 .ecSubtitle {
     font-family: "SF Mono", "Courier New", monospace;
-    font-size: 14;
+    font-size: 18;
 }
 
 .ecMenu {
@@ -29,9 +33,29 @@ ul.horizontal {
     margin: 20px;
 }
 
+.ecMenuCurrent {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    cursor: pointer;
+}
+
 .ecMenuHover:hover {
     text-decoration: underline;
     text-underline-offset: 5px;
+    cursor: pointer;
+}
+
+.dataLink {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.dataLink:hover {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    cursor: pointer;
 }
 
 ul.horizontal li {
@@ -228,11 +252,19 @@ ul.border li:last-child {
     display: inline-block;
 }
 
+#detailcontainer {
+    position: relative;
+    height: 700px;
+    min-width: 800px;
+    margin: 0 auto;
+}
+
 #mapcontainer {
     height: 500px;
     min-width: 800px;
     margin: 0 auto;
 }
+
 .loading {
     margin-top: 10em;
     text-align: center;
@@ -242,6 +274,7 @@ ul.border li:last-child {
 .projectList {
     min-height: 0;
     min-width:  0;
+    max-height: 650px;
     display: flex; 
     flex-direction: column; 
     flex: 0 1 auto;
@@ -283,6 +316,64 @@ ul.border li:last-child {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+[data-tooltip-text]:hover {
+    position: relative;
+}
+
+[data-tooltip-text]:hover:after {
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+    box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    color: #FFFFFF;
+    font-size: 12px;
+    content: attr(data-tooltip-text);
+
+    margin-bottom: 10px;
+    top: 130%;
+    left: -100px;    
+    padding: 7px 12px;
+    position: absolute;
+    width: auto;
+    min-width: 50px;
+    word-wrap: break-word;
+
+    z-index: 9999;
+}
+
+#projectDetails {
+    font-family: "SF Mono", "Courier New", monospace;
+    font-size: 14;
+    min-width: 800px;
+    margin: 20 auto;
+    background-color: white;
+    color: #555;
+    text-align: center;
+    border: 2px solid #bbb;
+    padding: 5px 0;
+    overflow: visible;
+}
+
+#daoDetails {
+    font-family: "SF Mono", "Courier New", monospace;
+    font-size: 16;
+    margin: 10px;
+    width: 700px;
+    background-color: white;
+    color: #555;
+    text-align: left;
+    border: 2px solid #bbb;
+    padding: 30px;
+    overflow: visible;
 }
 
 .fundprogress {

@@ -1,0 +1,61 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/us/custom/us-all-territories.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="./web3.js"></script>
+    <script src="./ecscripts/abi-decoder.js"></script>
+</head>
+
+<div class="webHeader">
+    <div style="margin: 20px" onclick="window.location = 'index.html';">
+        <div class="ecHeader"><b>ElectChain</b></div>
+        <div class="ecSubtitle">Preserving the Information of Democracy</div>
+    </div>
+    <div style="display: flex; align-items: center;">
+        <div class="ecMenu ecMenuHover" onclick="window.location = 'index.html'">Maps</div>
+        <div class="ecMenu ecMenuCurrent" onclick="window.location = 'dao.html'">DAO</div>
+        <div class="ecMenu ecMenuHover">Data</div>
+        <div class="ecMenu ecMenuHover">About</div>
+    </div>
+</div>
+
+<body>
+    <center>
+    <div id="daoDetails">
+        <b>ElectChain's goal is to preserve, and advocate for the preservation of, information about our democracy for future generations, in a way that is censorship-resistant and easily verifiable.</b><br><br>
+
+        This breaks down into two concrete tasks:<br>
+
+        <ol>
+            <li><b>Expose existing information that has been written to the blockchain</b>, in an easy-to-consume way. People should be able to readily examine and read data. This comes in the form of the website you are on now, the ElectChain website. It aggregates information from decentralized sources, but (for now) is not decentralized itself.</li>
+            <li><b>Upload new information to the blockchain from reputable sources.</b> This comes in the form of the <i>ElectChain smart contracts</i>.</li><br>
+        </ol>
+        Currently, only one person maintains the ElectChain website, and the ElectChain smart contracts. This, of course, goes against the principles of decentralizing information, and makes the organization susceptible to failure. In an ideal situation, I want <i>less</i> control over what happens. This is preferable for several reasons, including:<br>
+        <ul>
+            <li>
+                Others can make technical decisions I would not have considered, such as in smart contract design or blockchain choice,
+            </li>
+            <li>
+                Others can make better prioritization decisions on which information is necessary to archive, store, and display,
+            </li>
+            <li>
+                This project will be robust to failure conditions involving one individual.
+            </li>
+        </ul>
+        <br>
+        However, the sensitivity of the information necessitates some consideration. We don't want to simply sell tokens that give holders the right to vote on proposals. We would like the information contained on the website, the sources we trust, and the smart contract data to be <i>true</i>, not just <i>popular.</i><br><br>
+
+        At least at the beginning, therefore, this necessitates some degree of organization; I want to make sure that those that participate are trustworthy and willing to contribute! <br><br>
+
+        <b>If you've read this far down the page and are interested in getting involved, just make a contract call to register your interest (pay only gas), then send an email to dao@electchain.app with your address and any ideas you have, or how you'd like to contribute.</b><br><br>
+        Contract address: 0x4eff6001362bdf6528905ce7596F36AB639D462d
+    </div>
+    </center>
+</body>
