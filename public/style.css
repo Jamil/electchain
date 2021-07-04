@@ -255,7 +255,6 @@ ul.border li:last-child {
 #detailcontainer {
     position: relative;
     height: 700px;
-    min-width: 800px;
     margin: 0 auto;
 }
 
@@ -273,7 +272,7 @@ ul.border li:last-child {
 
 .projectList {
     min-height: 0;
-    min-width:  0;
+    min-width:  468px;
     max-height: 650px;
     display: flex; 
     flex-direction: column; 
