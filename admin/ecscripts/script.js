@@ -211,7 +211,7 @@ $("#uploadmit19762020").click(function() {
                 //                  console.log(error);
                 //              });
             }
-            if (year == 2020) {
+            if (year == 2016) {
                 publishYearData(year, states, parties, votes);
             }
         }
