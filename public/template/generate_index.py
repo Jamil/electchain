@@ -66,6 +66,9 @@ projects = '''
 footer = '''
 <div class="console">
 </div>
+<div style="display: none;">
+    <img src="android-chrome-512x512.png">
+</div>
 
 <script src="./ecscripts/utils.js"></script>
 <script src="./dao.js"></script>
