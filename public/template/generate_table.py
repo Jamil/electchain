@@ -31,7 +31,8 @@ ropsten_fund_tooltip_template = '''
     but is not secure or preserved until it is put on the <br>
     Ethereum main blockchain, or mainnet.<br><br>
     You can help make this happen by sending funds to <br>
-    <a href="javascript:donate('{fund_address}')" class="dataLink">{fund_address}</a>
+    <a href="https://etherscan.io/address/{fund_address}" class="dataLink">{fund_address}</a><br>
+    <a href="javascript:donate('{fund_address}')" class="dataLink">Contribute</a>
     <br><br>
     Funds raised for <i>{title}</i> preservation: <span class="fundBalance" id="{identifier}-fund-balance" data-fund-address="{fund_address}">?</span> ETH of 0.10 ETH<br>
     '''

@@ -38,7 +38,7 @@ function register(address) {
                     from: user_address,
                     value: web3.utils.toWei('0.005', 'ether'),
                 }, function (err, transactionHash) {
-                    alert('Thank you! This goes a long way to helping preserve our information. You can check the new fund balance by reloading this page.')
+                    alert('Thank you! The contract call was successful');
                 })
             } else {
                 alert('You need to log in MetaMask to use this feature.')
@@ -58,7 +58,11 @@ function donate(address) {
                     from: user_address,
                     value: web3.utils.toWei('0.005', 'ether'),
                 }, function (err, transactionHash) {
-                    alert('Thank you! This goes a long way to helping preserve our information. You can check the new fund balance by reloading this page.')
+                    if (err != null) {
+                        alert('Looks like something went wrong: ' + err.message);
+                    } else {
+                        alert('Thank you! This goes a long way to helping preserve our information. You can check the new fund balance by reloading this page.');
+                    }
                 })
             } else {
                 alert('You need to log in MetaMask to use this feature.')
