@@ -37,6 +37,20 @@ ropsten_fund_tooltip_template = '''
     Funds raised for <i>{title}</i> preservation: <span class="fundBalance" id="{identifier}-fund-balance" data-fund-address="{fund_address}">?</span> ETH of 0.10 ETH<br>
     '''
 
+ropsten_funded_tooltip_template = '''
+    This data is on the Ropsten test network.<br><br>
+    It is stored on a <span data-tooltip-text="{chain_address}">
+    <a href="{block_link}" class="dataLink" target="_blank">smart contract</a></span> on-chain,<br>
+    but is not secure or preserved until it is put on the <br>
+    Ethereum main blockchain, or mainnet.<br><br>
+
+    Thankfully, the project is fully funded to bring it to the Ethereum mainnet.<br>
+    Thank you to everyone who contributed; you can see the addresses of those that helped at:<br>
+    <a href="https://etherscan.io/address/{fund_address}" class="dataLink">{fund_address}</a><br><br>
+    This data will be uploaded to the main Ethereum network as soon as gas prices fall.
+    <br>
+    '''
+
 ropsten_nofund_tooltip_template = '''
     This data is on the Ropsten test network.<br><br>
     It is stored on a <span data-tooltip-text="{chain_address}">
@@ -74,7 +88,13 @@ def generate_table():
         }[dataset['chain_source']['network']]
 
         if dataset['chain_source']['network'] == 'ropsten':
-            if dataset.get('fund_address'):
+            if dataset.get('fund_address') and dataset.get('funded'):
+                network_tooltip = ropsten_funded_tooltip_template.format(
+                    fund_address = dataset['fund_address'],
+                    chain_address = dataset['chain_source']['address'],
+                    block_link = chain_link,
+                )
+            elif dataset.get('fund_address'):
                 network_tooltip = ropsten_fund_tooltip_template.format(
                     title = dataset['title'],
                     identifier = dataset['id'],
@@ -84,7 +104,8 @@ def generate_table():
                 )
             else:
                 network_tooltip = ropsten_nofund_tooltip_template.format(
-                    block_link = chain_link
+                    block_link = chain_link,
+                    chain_address = dataset['chain_source']['address'],
                 )
         else:
             network_tooltip = mainnet_network_tooltip.format(

@@ -26,6 +26,7 @@
             "address": "0x9c5a41719c9c496afbf14d6fd00764c656a2da82",
             "network": "ropsten"
         },
+        "funded": true,
         "fund_address": "0x5720c8ebb5f3457f18e960f9fdb6c0f3cc2c5eb5"
     },
     {
